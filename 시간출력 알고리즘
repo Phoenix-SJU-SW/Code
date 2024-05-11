@@ -5,7 +5,7 @@ const int ledPin = 13; // LED 핀 설정
 unsigned long previousMillis = 0; // 이전 시간 저장
 const long interval = 1000; // 1초 간격으로 LED 깜빡이기
 int year, month, day, hour, minute, second; // 시간 변수 선언
-
+ 
 typedef struct sejongclass {
     char class_name[40];
     float class_start_c_time;
