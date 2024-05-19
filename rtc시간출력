@@ -273,18 +273,28 @@ void loop() {
         break;
     case 1: // Monday
         check("Mon", hour + (minute / 60.0)); // 현재 요일이 월요일인 경우 수업 정보 확인
+        printDay();
+        Serial.println();
         break;
     case 2: // Tuesday
         check("Tue", hour + (minute / 60.0)); // 현재 요일이 화요일인 경우 수업 정보 확인
+        printDay();
+        Serial.println();
         break;
     case 3: // Wednesday
         check("Wed", hour + (minute / 60.0)); // 현재 요일이 수요일인 경우 수업 정보 확인
+        printDay();
+        Serial.println();
         break;
     case 4: // Thursday
         check("Thu", hour + (minute / 60.0)); // 현재 요일이 목요일인 경우 수업 정보 확인
+        printDay();
+        Serial.println();
         break;
     case 5: // Friday
         check("Fri", hour + (minute / 60.0)); // 현재 요일이 금요일인 경우 수업 정보 확인
+        printDay();
+        Serial.println();
         break;
     case 6: // Saturday
         Serial.println("No classes today.");
