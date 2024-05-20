@@ -6,6 +6,8 @@
 ThreeWire myWire(4, 5, 3); // IO, SCLK, CE  디지털 연결 번호
 RtcDS1302<ThreeWire> Rtc(myWire);
 
+unsigned long previousMillis = 0; // 마지막으로 시간을 출력한 시각
+
 const int ledPin = 13; // LED 핀 설정
 int year, month, day, hour, minute, second, dayOfWeek; // 시간 및 요일 변수 선언
 bool timeSet = false; // 시간이 설정되었는지 여부
@@ -252,6 +254,10 @@ void setup() {
 }
 
 void loop() {
+    unsigned long currentMillis = millis(); // 현재 시간
+
+    if (currentMillis - previousMillis >= 1000) { // 1초(1000밀리초) 경과 확인
+        previousMillis = currentMillis; // 마지막 출력 시간 업데이트
     RtcDateTime now = Rtc.GetDateTime(); // RTC 모듈로부터 현재 시간 가져오기
 
     // 시간 및 요일 업데이트
@@ -303,5 +309,5 @@ void loop() {
         Serial.println("Error: Invalid day of week.");
         break;
     }
-    delay(1000);
+  }
 }
