@@ -1,0 +1,21 @@
+#include <TimeLib.h>    // Time 라이브러리 추가
+#include <Wire.h>       // Wire 라이브러리 추가 (시리얼 통신에 필요)
+
+void setup() {
+  Serial.begin(9600);   // 시리얼 통신 시작
+  while (!Serial);      // 시리얼 통신이 활성화될 때까지 대기
+  setTime(0);           // 시간 초기화 (시작 시간을 0으로 설정)
+}
+
+void loop() {
+  // 현재 시간 가져오기
+  time_t t = now();
+  
+  // 시간을 포맷하여 시리얼 모니터에 출력
+  char buffer[20]; // 시간을 저장할 버퍼
+  sprintf(buffer, "%02d:%02d:%02d", hour(t), minute(t), second(t)); // 시간을 형식화
+  Serial.println(buffer); // 시리얼 모니터에 출력
+  
+  // 1초 대기
+  delay(1000);
+}
